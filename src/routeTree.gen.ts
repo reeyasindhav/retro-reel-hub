@@ -10,11 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MemberRouteImport } from './routes/_member'
 import { Route as ClubsRouteImport } from './routes/clubs'
 import { Route as DecadesRouteImport } from './routes/decades'
 import { Route as DirectorsRouteImport } from './routes/directors'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as MemberDashboardRouteImport } from './routes/_member.dashboard'
 import { Route as ClubsSlugRouteImport } from './routes/clubs_.$slug'
 import { Route as DecadesDecadeRouteImport } from './routes/decades_.$decade'
 import { Route as DirectorsSlugRouteImport } from './routes/directors_.$slug'
@@ -23,6 +25,10 @@ import { Route as FilmsSlugRouteImport } from './routes/films.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemberRoute = MemberRouteImport.update({
+  id: '/_member',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClubsRoute = ClubsRouteImport.update({
@@ -49,6 +55,11 @@ const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
   getParentRoute: () => rootRouteImport,
+} as any)
+const MemberDashboardRoute = MemberDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => MemberRoute,
 } as any)
 const ClubsSlugRoute = ClubsSlugRouteImport.update({
   id: '/clubs_/$slug',
@@ -78,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/directors': typeof DirectorsRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
+  '/dashboard': typeof MemberDashboardRoute
   '/clubs/$slug': typeof ClubsSlugRoute
   '/decades/$decade': typeof DecadesDecadeRoute
   '/directors/$slug': typeof DirectorsSlugRoute
@@ -90,6 +102,7 @@ export interface FileRoutesByTo {
   '/directors': typeof DirectorsRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
+  '/dashboard': typeof MemberDashboardRoute
   '/clubs/$slug': typeof ClubsSlugRoute
   '/decades/$decade': typeof DecadesDecadeRoute
   '/directors/$slug': typeof DirectorsSlugRoute
@@ -98,11 +111,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_member': typeof MemberRouteWithChildren
   '/clubs': typeof ClubsRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
+  '/_member/dashboard': typeof MemberDashboardRoute
   '/clubs_/$slug': typeof ClubsSlugRoute
   '/decades_/$decade': typeof DecadesDecadeRoute
   '/directors_/$slug': typeof DirectorsSlugRoute
@@ -117,6 +132,7 @@ export interface FileRouteTypes {
     | '/directors'
     | '/login'
     | '/signup'
+    | '/dashboard'
     | '/clubs/$slug'
     | '/decades/$decade'
     | '/directors/$slug'
@@ -129,6 +145,7 @@ export interface FileRouteTypes {
     | '/directors'
     | '/login'
     | '/signup'
+    | '/dashboard'
     | '/clubs/$slug'
     | '/decades/$decade'
     | '/directors/$slug'
@@ -136,11 +153,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_member'
     | '/clubs'
     | '/decades'
     | '/directors'
     | '/login'
     | '/signup'
+    | '/_member/dashboard'
     | '/clubs_/$slug'
     | '/decades_/$decade'
     | '/directors_/$slug'
@@ -149,6 +168,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MemberRoute: typeof MemberRouteWithChildren
   ClubsRoute: typeof ClubsRoute
   DecadesRoute: typeof DecadesRoute
   DirectorsRoute: typeof DirectorsRoute
@@ -167,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_member': {
+      id: '/_member'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof MemberRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/clubs': {
@@ -204,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_member/dashboard': {
+      id: '/_member/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof MemberDashboardRouteImport
+      parentRoute: typeof MemberRoute
+    }
     '/clubs_/$slug': {
       id: '/clubs_/$slug'
       path: '/clubs/$slug'
@@ -235,8 +269,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface MemberRouteChildren {
+  MemberDashboardRoute: typeof MemberDashboardRoute
+}
+
+const MemberRouteChildren: MemberRouteChildren = {
+  MemberDashboardRoute: MemberDashboardRoute,
+}
+
+const MemberRouteWithChildren =
+  MemberRoute._addFileChildren(MemberRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MemberRoute: MemberRouteWithChildren,
   ClubsRoute: ClubsRoute,
   DecadesRoute: DecadesRoute,
   DirectorsRoute: DirectorsRoute,
