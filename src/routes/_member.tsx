@@ -1,8 +1,16 @@
 import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
 import { Film, LayoutDashboard, LogOut, Bookmark, Users } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/site-header";
 import { useAuth } from "@/lib/auth";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/_member")({
   component: MemberLayout,
@@ -18,6 +26,7 @@ const links = [
 function MemberLayout() {
   const { user, ready, signOut } = useAuth();
   const navigate = useNavigate();
+  const [signOutOpen, setSignOutOpen] = useState(false);
 
   useEffect(() => {
     if (ready && !user) navigate({ to: "/login" });
@@ -60,14 +69,39 @@ function MemberLayout() {
             </div>
           </div>
           <button
-            onClick={() => {
-              signOut();
-              navigate({ to: "/" });
-            }}
+            onClick={() => setSignOutOpen(true)}
             className="label-mono mt-5 flex w-full items-center gap-2 text-ink-foreground/50 transition-colors hover:text-accent"
           >
             <LogOut className="size-3.5" /> Sign out
           </button>
+
+        <Dialog open={signOutOpen} onOpenChange={setSignOutOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Sign out</DialogTitle>
+              <DialogDescription>
+                Are you sure you want to end your session? You can sign back in anytime.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <button
+                onClick={() => setSignOutOpen(false)}
+                className="label-mono border border-border px-4 py-2 transition-colors hover:bg-secondary"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  signOut();
+                  navigate({ to: "/" });
+                }}
+                className="label-mono bg-ink px-4 py-2 text-ink-foreground transition-colors hover:bg-accent"
+              >
+                Sign out
+              </button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
         </div>
       </aside>
 

@@ -11,11 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MemberRouteImport } from './routes/_member'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ClubsRouteImport } from './routes/clubs'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DecadesRouteImport } from './routes/decades'
 import { Route as DirectorsRouteImport } from './routes/directors'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as MemberDashboardRouteImport } from './routes/_member.dashboard'
 import { Route as MemberShelfRouteImport } from './routes/_member.shelf'
 import { Route as ClubsSlugRouteImport } from './routes/clubs_.$slug'
@@ -32,9 +38,24 @@ const MemberRoute = MemberRouteImport.update({
   id: '/_member',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClubsRoute = ClubsRouteImport.update({
   id: '/clubs',
   path: '/clubs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DecadesRoute = DecadesRouteImport.update({
@@ -47,14 +68,29 @@ const DirectorsRoute = DirectorsRouteImport.update({
   path: '/directors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MemberDashboardRoute = MemberDashboardRouteImport.update({
@@ -90,11 +126,17 @@ const FilmsSlugRoute = FilmsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/clubs': typeof ClubsRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
+  '/faq': typeof FaqRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
   '/dashboard': typeof MemberDashboardRoute
   '/shelf': typeof MemberShelfRoute
   '/clubs/$slug': typeof ClubsSlugRoute
@@ -104,11 +146,17 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/clubs': typeof ClubsRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
+  '/faq': typeof FaqRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
   '/dashboard': typeof MemberDashboardRoute
   '/shelf': typeof MemberShelfRoute
   '/clubs/$slug': typeof ClubsSlugRoute
@@ -120,11 +168,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_member': typeof MemberRouteWithChildren
+  '/about': typeof AboutRoute
   '/clubs': typeof ClubsRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
+  '/faq': typeof FaqRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
   '/_member/dashboard': typeof MemberDashboardRoute
   '/_member/shelf': typeof MemberShelfRoute
   '/clubs_/$slug': typeof ClubsSlugRoute
@@ -136,11 +190,17 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/clubs'
+    | '/contact'
+    | '/cookies'
     | '/decades'
     | '/directors'
+    | '/faq'
     | '/login'
+    | '/privacy'
     | '/signup'
+    | '/terms'
     | '/dashboard'
     | '/shelf'
     | '/clubs/$slug'
@@ -150,11 +210,17 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/clubs'
+    | '/contact'
+    | '/cookies'
     | '/decades'
     | '/directors'
+    | '/faq'
     | '/login'
+    | '/privacy'
     | '/signup'
+    | '/terms'
     | '/dashboard'
     | '/shelf'
     | '/clubs/$slug'
@@ -165,11 +231,17 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_member'
+    | '/about'
     | '/clubs'
+    | '/contact'
+    | '/cookies'
     | '/decades'
     | '/directors'
+    | '/faq'
     | '/login'
+    | '/privacy'
     | '/signup'
+    | '/terms'
     | '/_member/dashboard'
     | '/_member/shelf'
     | '/clubs_/$slug'
@@ -181,11 +253,17 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MemberRoute: typeof MemberRouteWithChildren
+  AboutRoute: typeof AboutRoute
   ClubsRoute: typeof ClubsRoute
+  ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
   DecadesRoute: typeof DecadesRoute
   DirectorsRoute: typeof DirectorsRoute
+  FaqRoute: typeof FaqRoute
   LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
   SignupRoute: typeof SignupRoute
+  TermsRoute: typeof TermsRoute
   ClubsSlugRoute: typeof ClubsSlugRoute
   DecadesDecadeRoute: typeof DecadesDecadeRoute
   DirectorsSlugRoute: typeof DirectorsSlugRoute
@@ -208,11 +286,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MemberRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/clubs': {
       id: '/clubs'
       path: '/clubs'
       fullPath: '/clubs'
       preLoaderRoute: typeof ClubsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/decades': {
@@ -229,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -236,11 +342,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_member/dashboard': {
@@ -304,11 +424,17 @@ const MemberRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MemberRoute: MemberRouteWithChildren,
+  AboutRoute: AboutRoute,
   ClubsRoute: ClubsRoute,
+  ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
   DecadesRoute: DecadesRoute,
   DirectorsRoute: DirectorsRoute,
+  FaqRoute: FaqRoute,
   LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
   SignupRoute: SignupRoute,
+  TermsRoute: TermsRoute,
   ClubsSlugRoute: ClubsSlugRoute,
   DecadesDecadeRoute: DecadesDecadeRoute,
   DirectorsSlugRoute: DirectorsSlugRoute,

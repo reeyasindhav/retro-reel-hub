@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Circle, Play, Sparkles, Users } from "lucide-react";
+import { ArrowRight, Circle, Film, Play, Users } from "lucide-react";
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -244,7 +244,7 @@ function Index() {
             </Link>
           </div>
           <div className="flex items-center gap-4 border-l-2 border-accent pl-6">
-            <Sparkles className="size-6 shrink-0 text-accent" />
+            <Film className="size-6 shrink-0 text-accent" />
             <div>
               <p className="label-mono text-muted-foreground">Coming soon</p>
               <p className="mt-1 text-[15px]">Director deep dives & full filmographies</p>

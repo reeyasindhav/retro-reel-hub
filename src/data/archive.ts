@@ -51,7 +51,8 @@ export const films: Film[] = [
     country: "Germany",
     genre: "Science Fiction",
     tag: "Expressionist",
-    still: u("photo-1516035069371-29a1b244cc32"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/d/d9/%22Metropolis%22_%281927_film%29_%2815418159339%29.jpg",
     synopsis:
       "In a vertical city split between penthouse dreamers and subterranean workers, a machine-woman is built to break a strike.",
     notes:
@@ -142,10 +143,12 @@ export const films: Film[] = [
     country: "USA",
     genre: "Noir",
     tag: "Noir",
-    still: u("photo-1542204165-65bf26472b9b"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/1/14/Sunset_Boulevard_%281950_poster%29.jpg",
     synopsis:
       "A broke screenwriter drifts into the mansion of a silent-era star who is still waiting for her close-up.",
-    notes: "Narrated by a dead man. Wilder shot the original opening in a morgue and had to cut it.",
+    notes:
+      "Narrated by a dead man. Wilder shot the original opening in a morgue and had to cut it.",
   },
   {
     slug: "the-cabinet-of-dr-caligari",
@@ -159,10 +162,12 @@ export const films: Film[] = [
     country: "Germany",
     genre: "Horror",
     tag: "Expressionist",
-    still: u("photo-1533488765986-dfa2a9939acd"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/7/74/CABINETOFDRCALIGARI-poster.jpg",
     synopsis:
       "A hypnotist and his sleepwalker arrive in a town of painted, leaning walls, and people begin to die at night.",
-    notes: "Sets were painted on canvas because electricity was rationed. Constraint became a movement.",
+    notes:
+      "Sets were painted on canvas because electricity was rationed. Constraint became a movement.",
   },
   {
     slug: "bicycle-thieves",
@@ -193,11 +198,13 @@ export const films: Film[] = [
     country: "Japan",
     genre: "Drama",
     tag: "Shomin-geki",
-    still: u("photo-1497015289639-54688650d173"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/8/86/Tokyo_monogatari_poster.jpg",
     staffPick: true,
     synopsis:
       "An elderly couple travel to visit their grown children and find that everyone is busy being polite.",
-    notes: "Ozu keeps the camera at tatami height and almost never moves it. The stillness does the work.",
+    notes:
+      "Ozu keeps the camera at tatami height and almost never moves it. The stillness does the work.",
   },
   {
     slug: "the-third-man",
@@ -228,7 +235,8 @@ export const films: Film[] = [
     country: "Japan",
     genre: "Epic",
     tag: "Jidaigeki",
-    still: u("photo-1598899134739-24c46f58b8c0"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/b/b5/Seven_Samurai_poster2.jpg",
     synopsis:
       "A starving village hires seven masterless swordsmen to stand between it and the harvest raiders.",
     notes:
@@ -249,7 +257,8 @@ export const films: Film[] = [
     still: u("photo-1485846234645-a62644f84728"),
     synopsis:
       "Seven nights in Rome with a gossip journalist who keeps mistaking spectacle for meaning.",
-    notes: "Gave the world the word paparazzi, named after a photographer character called Paparazzo.",
+    notes:
+      "Gave the world the word paparazzi, named after a photographer character called Paparazzo.",
   },
   {
     slug: "the-general",
@@ -263,10 +272,12 @@ export const films: Film[] = [
     country: "USA",
     genre: "Comedy",
     tag: "Silent",
-    still: u("photo-1574267432553-4b4628081c31"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/3/36/The_General_%281926%29_-_Movie_Poster.png",
     synopsis:
       "A railway engineer rejected by the army chases his stolen locomotive straight through the front line.",
-    notes: "The bridge collapse was the most expensive shot of the silent era. It was done in one take.",
+    notes:
+      "The bridge collapse was the most expensive shot of the silent era. It was done in one take.",
   },
   {
     slug: "casablanca",
@@ -280,10 +291,12 @@ export const films: Film[] = [
     country: "USA",
     genre: "Romance",
     tag: "Studio Era",
-    still: u("photo-1542204625-ca960ca44635"),
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/b/b3/CasablancaPoster-Gold.jpg",
     synopsis:
       "A nightclub owner in wartime Morocco has to decide whether neutrality is a position or a hiding place.",
-    notes: "The ending was still unwritten a week into shooting. Nobody on set knew who would leave.",
+    notes:
+      "The ending was still unwritten a week into shooting. Nobody on set knew who would leave.",
   },
   {
     slug: "rear-window",
@@ -348,10 +361,11 @@ export const films: Film[] = [
     country: "Germany",
     genre: "Drama",
     tag: "Silent",
-    still: u("photo-1518929458119-e5bf444c30f4"),
-    synopsis:
-      "Lulu moves through Weimar Berlin leaving ruin behind her, entirely without malice.",
-    notes: "Louise Brooks' bob became the decade's silhouette. She was dismissed by critics for 40 years.",
+    still:
+      "https://upload.wikimedia.org/wikipedia/commons/6/67/%22La_Caja_de_Pandora%22_poster%2C_1929.jpg",
+    synopsis: "Lulu moves through Weimar Berlin leaving ruin behind her, entirely without malice.",
+    notes:
+      "Louise Brooks' bob became the decade's silhouette. She was dismissed by critics for 40 years.",
   },
 ];
 
@@ -374,7 +388,8 @@ export const directors: Director[] = [
     years: "1930 – 2022",
     country: "France",
     era: "1960s",
-    portrait: u("photo-1489599849927-2ee91cede3ba", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/2/24/Jean%E2%80%93Luc_Godard_%28cropped%29.jpg",
     bio: "Critic turned saboteur. Godard treated the feature film as an essay you could argue with, cutting against continuity until the seams became the subject.",
     signature: "Jump cuts, direct address, quotation as argument.",
     filmCount: 42,
@@ -385,7 +400,8 @@ export const directors: Director[] = [
     years: "1899 – 1980",
     country: "UK / USA",
     era: "1950s",
-    portrait: u("photo-1536440136628-849c177e76a1", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/1/10/Alfred_Hitchcock_%281955%29.JPG",
     bio: "The architect of suspense. Hitchcock storyboarded anxiety frame by frame, giving the audience information the characters lacked and letting the wait do the damage.",
     signature: "Subjective camera, withheld information, ordinary rooms turned lethal.",
     filmCount: 53,
@@ -396,7 +412,8 @@ export const directors: Director[] = [
     years: "1910 – 1998",
     country: "Japan",
     era: "1950s",
-    portrait: u("photo-1598899134739-24c46f58b8c0", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/4/48/Akirakurosawa-onthesetof7samurai-1953-page88.jpg",
     bio: "A painter first, Kurosawa composed weather as a character: rain, dust and wind pressing on people who must still choose.",
     signature: "Multi-camera long lenses, axial cuts, elemental weather.",
     filmCount: 30,
@@ -407,7 +424,8 @@ export const directors: Director[] = [
     years: "1918 – 2007",
     country: "Sweden",
     era: "1960s",
-    portrait: u("photo-1524985069026-dd778a71c7b4", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ingmar_Bergman_%281966%29.jpg",
     bio: "Bergman shot faces the way other directors shoot landscapes, holding on them until doubt surfaced.",
     signature: "Close-ups without escape, silence as dialogue.",
     filmCount: 46,
@@ -418,7 +436,8 @@ export const directors: Director[] = [
     years: "1890 – 1976",
     country: "Germany / USA",
     era: "1920s",
-    portrait: u("photo-1516035069371-29a1b244cc32", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/2/20/Fritz_Lang_%281969%29.jpg",
     bio: "From Weimar spectacle to American noir, Lang drew systems: cities, crowds and machines that grind the individual down.",
     signature: "Geometry of crowds, shadow as verdict.",
     filmCount: 40,
@@ -429,7 +448,8 @@ export const directors: Director[] = [
     years: "1920 – 1993",
     country: "Italy",
     era: "1960s",
-    portrait: u("photo-1440404653325-ab127d49abc1", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/9/97/Federico_Fellini_NYWTS_2.jpg",
     bio: "Fellini abandoned plot for procession, staging memory as a parade that never quite explains itself.",
     signature: "Circus logic, dream inserts, crowded frames.",
     filmCount: 24,
@@ -440,7 +460,8 @@ export const directors: Director[] = [
     years: "1903 – 1963",
     country: "Japan",
     era: "1950s",
-    portrait: u("photo-1497015289639-54688650d173", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/8/85/Yasujiro_Ozu_01.jpg",
     bio: "Ozu filmed families at the exact height of someone sitting on the floor, and let ordinary politeness carry heartbreak.",
     signature: "Tatami-level camera, pillow shots, no pans.",
     filmCount: 54,
@@ -451,7 +472,8 @@ export const directors: Director[] = [
     years: "1906 – 2002",
     country: "Austria / USA",
     era: "1950s",
-    portrait: u("photo-1542204165-65bf26472b9b", 900),
+    portrait:
+      "https://upload.wikimedia.org/wikipedia/commons/d/d0/Billy_Wilder.jpg",
     bio: "Wilder wrote dialogue like a card sharp and directed with the invisible efficiency of someone who knew the audience was smart.",
     signature: "Cynical narration, immaculate structure, last-line punchlines.",
     filmCount: 27,

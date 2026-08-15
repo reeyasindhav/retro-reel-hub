@@ -13,32 +13,40 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "../lib/auth";
 import { Toaster } from "../components/ui/sonner";
+import { SiteHeader } from "../components/site-header";
+import { SiteFooter } from "../components/site-footer";
 
 function NotFoundComponent() {
   return (
-    <div className="grain flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <p className="label-mono text-accent">Reel missing</p>
-        <h1 className="mt-3 font-display text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">This print was never struck</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for isn't in the archive. Try browsing by decade instead.
-        </p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Link
-            to="/"
-            className="label-mono inline-flex items-center justify-center bg-ink px-4 py-3 text-ink-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </Link>
-          <Link
-            to="/decades"
-            className="label-mono inline-flex items-center justify-center border border-border px-4 py-3 transition-colors hover:bg-secondary"
-          >
-            Browse decades
-          </Link>
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+
+      <main className="grain flex min-h-[calc(100vh-64px)] items-center justify-center px-4">
+        <div className="max-w-md text-center">
+          <p className="label-mono text-accent">Reel missing</p>
+          <h1 className="mt-3 font-display text-7xl font-bold text-foreground">404</h1>
+          <h2 className="mt-4 text-xl font-semibold text-foreground">This print was never struck</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            The page you're looking for isn't in the archive. Try browsing by decade instead.
+          </p>
+          <div className="mt-6 flex justify-center gap-3">
+            <Link
+              to="/"
+              className="label-mono inline-flex items-center justify-center bg-ink px-4 py-3 text-ink-foreground transition-colors hover:bg-accent"
+            >
+              Go home
+            </Link>
+            <Link
+              to="/decades"
+              className="label-mono inline-flex items-center justify-center border border-border px-4 py-3 transition-colors hover:bg-secondary"
+            >
+              Browse decades
+            </Link>
+          </div>
         </div>
-      </div>
+      </main>
+
+      <SiteFooter />
     </div>
   );
 }
