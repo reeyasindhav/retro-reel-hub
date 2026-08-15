@@ -17,6 +17,7 @@ import { Route as DirectorsRouteImport } from './routes/directors'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as MemberDashboardRouteImport } from './routes/_member.dashboard'
+import { Route as MemberShelfRouteImport } from './routes/_member.shelf'
 import { Route as ClubsSlugRouteImport } from './routes/clubs_.$slug'
 import { Route as DecadesDecadeRouteImport } from './routes/decades_.$decade'
 import { Route as DirectorsSlugRouteImport } from './routes/directors_.$slug'
@@ -61,6 +62,11 @@ const MemberDashboardRoute = MemberDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => MemberRoute,
 } as any)
+const MemberShelfRoute = MemberShelfRouteImport.update({
+  id: '/shelf',
+  path: '/shelf',
+  getParentRoute: () => MemberRoute,
+} as any)
 const ClubsSlugRoute = ClubsSlugRouteImport.update({
   id: '/clubs_/$slug',
   path: '/clubs/$slug',
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof MemberDashboardRoute
+  '/shelf': typeof MemberShelfRoute
   '/clubs/$slug': typeof ClubsSlugRoute
   '/decades/$decade': typeof DecadesDecadeRoute
   '/directors/$slug': typeof DirectorsSlugRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof MemberDashboardRoute
+  '/shelf': typeof MemberShelfRoute
   '/clubs/$slug': typeof ClubsSlugRoute
   '/decades/$decade': typeof DecadesDecadeRoute
   '/directors/$slug': typeof DirectorsSlugRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/_member/dashboard': typeof MemberDashboardRoute
+  '/_member/shelf': typeof MemberShelfRoute
   '/clubs_/$slug': typeof ClubsSlugRoute
   '/decades_/$decade': typeof DecadesDecadeRoute
   '/directors_/$slug': typeof DirectorsSlugRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/dashboard'
+    | '/shelf'
     | '/clubs/$slug'
     | '/decades/$decade'
     | '/directors/$slug'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/dashboard'
+    | '/shelf'
     | '/clubs/$slug'
     | '/decades/$decade'
     | '/directors/$slug'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/_member/dashboard'
+    | '/_member/shelf'
     | '/clubs_/$slug'
     | '/decades_/$decade'
     | '/directors_/$slug'
@@ -238,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MemberDashboardRouteImport
       parentRoute: typeof MemberRoute
     }
+    '/_member/shelf': {
+      id: '/_member/shelf'
+      path: '/shelf'
+      fullPath: '/shelf'
+      preLoaderRoute: typeof MemberShelfRouteImport
+      parentRoute: typeof MemberRoute
+    }
     '/clubs_/$slug': {
       id: '/clubs_/$slug'
       path: '/clubs/$slug'
@@ -271,10 +290,12 @@ declare module '@tanstack/react-router' {
 
 interface MemberRouteChildren {
   MemberDashboardRoute: typeof MemberDashboardRoute
+  MemberShelfRoute: typeof MemberShelfRoute
 }
 
 const MemberRouteChildren: MemberRouteChildren = {
   MemberDashboardRoute: MemberDashboardRoute,
+  MemberShelfRoute: MemberShelfRoute,
 }
 
 const MemberRouteWithChildren =
