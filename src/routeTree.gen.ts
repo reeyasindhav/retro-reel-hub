@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClubsRouteImport } from './routes/clubs'
 import { Route as DecadesRouteImport } from './routes/decades'
 import { Route as DirectorsRouteImport } from './routes/directors'
 import { Route as DecadesDecadeRouteImport } from './routes/decades_.$decade'
@@ -19,6 +20,11 @@ import { Route as FilmsSlugRouteImport } from './routes/films.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubsRoute = ClubsRouteImport.update({
+  id: '/clubs',
+  path: '/clubs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DecadesRoute = DecadesRouteImport.update({
@@ -49,6 +55,7 @@ const FilmsSlugRoute = FilmsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clubs': typeof ClubsRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/decades/$decade': typeof DecadesDecadeRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clubs': typeof ClubsRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/decades/$decade': typeof DecadesDecadeRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/clubs': typeof ClubsRoute
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/decades_/$decade': typeof DecadesDecadeRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/clubs'
     | '/decades'
     | '/directors'
     | '/decades/$decade'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/clubs'
     | '/decades'
     | '/directors'
     | '/decades/$decade'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/clubs'
     | '/decades'
     | '/directors'
     | '/decades_/$decade'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClubsRoute: typeof ClubsRoute
   DecadesRoute: typeof DecadesRoute
   DirectorsRoute: typeof DirectorsRoute
   DecadesDecadeRoute: typeof DecadesDecadeRoute
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clubs': {
+      id: '/clubs'
+      path: '/clubs'
+      fullPath: '/clubs'
+      preLoaderRoute: typeof ClubsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/decades': {
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClubsRoute: ClubsRoute,
   DecadesRoute: DecadesRoute,
   DirectorsRoute: DirectorsRoute,
   DecadesDecadeRoute: DecadesDecadeRoute,
