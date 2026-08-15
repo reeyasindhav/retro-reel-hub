@@ -10,33 +10,186 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MemberRouteImport } from './routes/_member'
+import { Route as ClubsRouteImport } from './routes/clubs'
+import { Route as DecadesRouteImport } from './routes/decades'
+import { Route as DirectorsRouteImport } from './routes/directors'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as MemberDashboardRouteImport } from './routes/_member.dashboard'
+import { Route as MemberShelfRouteImport } from './routes/_member.shelf'
+import { Route as ClubsSlugRouteImport } from './routes/clubs_.$slug'
+import { Route as DecadesDecadeRouteImport } from './routes/decades_.$decade'
+import { Route as DirectorsSlugRouteImport } from './routes/directors_.$slug'
+import { Route as FilmsSlugRouteImport } from './routes/films.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MemberRoute = MemberRouteImport.update({
+  id: '/_member',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubsRoute = ClubsRouteImport.update({
+  id: '/clubs',
+  path: '/clubs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecadesRoute = DecadesRouteImport.update({
+  id: '/decades',
+  path: '/decades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorsRoute = DirectorsRouteImport.update({
+  id: '/directors',
+  path: '/directors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemberDashboardRoute = MemberDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberShelfRoute = MemberShelfRouteImport.update({
+  id: '/shelf',
+  path: '/shelf',
+  getParentRoute: () => MemberRoute,
+} as any)
+const ClubsSlugRoute = ClubsSlugRouteImport.update({
+  id: '/clubs_/$slug',
+  path: '/clubs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecadesDecadeRoute = DecadesDecadeRouteImport.update({
+  id: '/decades_/$decade',
+  path: '/decades/$decade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorsSlugRoute = DirectorsSlugRouteImport.update({
+  id: '/directors_/$slug',
+  path: '/directors/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilmsSlugRoute = FilmsSlugRouteImport.update({
+  id: '/films/$slug',
+  path: '/films/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clubs': typeof ClubsRoute
+  '/decades': typeof DecadesRoute
+  '/directors': typeof DirectorsRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof MemberDashboardRoute
+  '/shelf': typeof MemberShelfRoute
+  '/clubs/$slug': typeof ClubsSlugRoute
+  '/decades/$decade': typeof DecadesDecadeRoute
+  '/directors/$slug': typeof DirectorsSlugRoute
+  '/films/$slug': typeof FilmsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clubs': typeof ClubsRoute
+  '/decades': typeof DecadesRoute
+  '/directors': typeof DirectorsRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof MemberDashboardRoute
+  '/shelf': typeof MemberShelfRoute
+  '/clubs/$slug': typeof ClubsSlugRoute
+  '/decades/$decade': typeof DecadesDecadeRoute
+  '/directors/$slug': typeof DirectorsSlugRoute
+  '/films/$slug': typeof FilmsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_member': typeof MemberRouteWithChildren
+  '/clubs': typeof ClubsRoute
+  '/decades': typeof DecadesRoute
+  '/directors': typeof DirectorsRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/_member/dashboard': typeof MemberDashboardRoute
+  '/_member/shelf': typeof MemberShelfRoute
+  '/clubs_/$slug': typeof ClubsSlugRoute
+  '/decades_/$decade': typeof DecadesDecadeRoute
+  '/directors_/$slug': typeof DirectorsSlugRoute
+  '/films/$slug': typeof FilmsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/clubs'
+    | '/decades'
+    | '/directors'
+    | '/login'
+    | '/signup'
+    | '/dashboard'
+    | '/shelf'
+    | '/clubs/$slug'
+    | '/decades/$decade'
+    | '/directors/$slug'
+    | '/films/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/clubs'
+    | '/decades'
+    | '/directors'
+    | '/login'
+    | '/signup'
+    | '/dashboard'
+    | '/shelf'
+    | '/clubs/$slug'
+    | '/decades/$decade'
+    | '/directors/$slug'
+    | '/films/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/_member'
+    | '/clubs'
+    | '/decades'
+    | '/directors'
+    | '/login'
+    | '/signup'
+    | '/_member/dashboard'
+    | '/_member/shelf'
+    | '/clubs_/$slug'
+    | '/decades_/$decade'
+    | '/directors_/$slug'
+    | '/films/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MemberRoute: typeof MemberRouteWithChildren
+  ClubsRoute: typeof ClubsRoute
+  DecadesRoute: typeof DecadesRoute
+  DirectorsRoute: typeof DirectorsRoute
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
+  ClubsSlugRoute: typeof ClubsSlugRoute
+  DecadesDecadeRoute: typeof DecadesDecadeRoute
+  DirectorsSlugRoute: typeof DirectorsSlugRoute
+  FilmsSlugRoute: typeof FilmsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +201,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_member': {
+      id: '/_member'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof MemberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clubs': {
+      id: '/clubs'
+      path: '/clubs'
+      fullPath: '/clubs'
+      preLoaderRoute: typeof ClubsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decades': {
+      id: '/decades'
+      path: '/decades'
+      fullPath: '/decades'
+      preLoaderRoute: typeof DecadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directors': {
+      id: '/directors'
+      path: '/directors'
+      fullPath: '/directors'
+      preLoaderRoute: typeof DirectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_member/dashboard': {
+      id: '/_member/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof MemberDashboardRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/_member/shelf': {
+      id: '/_member/shelf'
+      path: '/shelf'
+      fullPath: '/shelf'
+      preLoaderRoute: typeof MemberShelfRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/clubs_/$slug': {
+      id: '/clubs_/$slug'
+      path: '/clubs/$slug'
+      fullPath: '/clubs/$slug'
+      preLoaderRoute: typeof ClubsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decades_/$decade': {
+      id: '/decades_/$decade'
+      path: '/decades/$decade'
+      fullPath: '/decades/$decade'
+      preLoaderRoute: typeof DecadesDecadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directors_/$slug': {
+      id: '/directors_/$slug'
+      path: '/directors/$slug'
+      fullPath: '/directors/$slug'
+      preLoaderRoute: typeof DirectorsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/films/$slug': {
+      id: '/films/$slug'
+      path: '/films/$slug'
+      fullPath: '/films/$slug'
+      preLoaderRoute: typeof FilmsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface MemberRouteChildren {
+  MemberDashboardRoute: typeof MemberDashboardRoute
+  MemberShelfRoute: typeof MemberShelfRoute
+}
+
+const MemberRouteChildren: MemberRouteChildren = {
+  MemberDashboardRoute: MemberDashboardRoute,
+  MemberShelfRoute: MemberShelfRoute,
+}
+
+const MemberRouteWithChildren =
+  MemberRoute._addFileChildren(MemberRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MemberRoute: MemberRouteWithChildren,
+  ClubsRoute: ClubsRoute,
+  DecadesRoute: DecadesRoute,
+  DirectorsRoute: DirectorsRoute,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
+  ClubsSlugRoute: ClubsSlugRoute,
+  DecadesDecadeRoute: DecadesDecadeRoute,
+  DirectorsSlugRoute: DirectorsSlugRoute,
+  FilmsSlugRoute: FilmsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
