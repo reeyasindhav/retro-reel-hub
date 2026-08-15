@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DecadesRouteImport } from './routes/decades'
 import { Route as DirectorsRouteImport } from './routes/directors'
 import { Route as DecadesDecadeRouteImport } from './routes/decades_.$decade'
+import { Route as DirectorsSlugRouteImport } from './routes/directors_.$slug'
 import { Route as FilmsSlugRouteImport } from './routes/films.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const DecadesDecadeRoute = DecadesDecadeRouteImport.update({
   path: '/decades/$decade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DirectorsSlugRoute = DirectorsSlugRouteImport.update({
+  id: '/directors_/$slug',
+  path: '/directors/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FilmsSlugRoute = FilmsSlugRouteImport.update({
   id: '/films/$slug',
   path: '/films/$slug',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/decades/$decade': typeof DecadesDecadeRoute
+  '/directors/$slug': typeof DirectorsSlugRoute
   '/films/$slug': typeof FilmsSlugRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/decades/$decade': typeof DecadesDecadeRoute
+  '/directors/$slug': typeof DirectorsSlugRoute
   '/films/$slug': typeof FilmsSlugRoute
 }
 export interface FileRoutesById {
@@ -61,20 +69,33 @@ export interface FileRoutesById {
   '/decades': typeof DecadesRoute
   '/directors': typeof DirectorsRoute
   '/decades_/$decade': typeof DecadesDecadeRoute
+  '/directors_/$slug': typeof DirectorsSlugRoute
   '/films/$slug': typeof FilmsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/decades' | '/directors' | '/decades/$decade' | '/films/$slug'
+    | '/'
+    | '/decades'
+    | '/directors'
+    | '/decades/$decade'
+    | '/directors/$slug'
+    | '/films/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/decades' | '/directors' | '/decades/$decade' | '/films/$slug'
+  to:
+    | '/'
+    | '/decades'
+    | '/directors'
+    | '/decades/$decade'
+    | '/directors/$slug'
+    | '/films/$slug'
   id:
     | '__root__'
     | '/'
     | '/decades'
     | '/directors'
     | '/decades_/$decade'
+    | '/directors_/$slug'
     | '/films/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -83,6 +104,7 @@ export interface RootRouteChildren {
   DecadesRoute: typeof DecadesRoute
   DirectorsRoute: typeof DirectorsRoute
   DecadesDecadeRoute: typeof DecadesDecadeRoute
+  DirectorsSlugRoute: typeof DirectorsSlugRoute
   FilmsSlugRoute: typeof FilmsSlugRoute
 }
 
@@ -116,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DecadesDecadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/directors_/$slug': {
+      id: '/directors_/$slug'
+      path: '/directors/$slug'
+      fullPath: '/directors/$slug'
+      preLoaderRoute: typeof DirectorsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/films/$slug': {
       id: '/films/$slug'
       path: '/films/$slug'
@@ -131,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   DecadesRoute: DecadesRoute,
   DirectorsRoute: DirectorsRoute,
   DecadesDecadeRoute: DecadesDecadeRoute,
+  DirectorsSlugRoute: DirectorsSlugRoute,
   FilmsSlugRoute: FilmsSlugRoute,
 }
 export const routeTree = rootRouteImport
