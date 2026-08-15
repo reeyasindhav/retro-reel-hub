@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DecadesRouteImport } from './routes/decades'
+import { Route as DecadesDecadeRouteImport } from './routes/decades_.$decade'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const DecadesRoute = DecadesRouteImport.update({
   path: '/decades',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DecadesDecadeRoute = DecadesDecadeRouteImport.update({
+  id: '/decades_/$decade',
+  path: '/decades/$decade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/decades': typeof DecadesRoute
+  '/decades/$decade': typeof DecadesDecadeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/decades': typeof DecadesRoute
+  '/decades/$decade': typeof DecadesDecadeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/decades': typeof DecadesRoute
+  '/decades_/$decade': typeof DecadesDecadeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/decades'
+  fullPaths: '/' | '/decades' | '/decades/$decade'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/decades'
-  id: '__root__' | '/' | '/decades'
+  to: '/' | '/decades' | '/decades/$decade'
+  id: '__root__' | '/' | '/decades' | '/decades_/$decade'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DecadesRoute: typeof DecadesRoute
+  DecadesDecadeRoute: typeof DecadesDecadeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DecadesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/decades_/$decade': {
+      id: '/decades_/$decade'
+      path: '/decades/$decade'
+      fullPath: '/decades/$decade'
+      preLoaderRoute: typeof DecadesDecadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DecadesRoute: DecadesRoute,
+  DecadesDecadeRoute: DecadesDecadeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
